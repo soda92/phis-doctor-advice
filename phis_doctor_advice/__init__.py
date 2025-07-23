@@ -107,7 +107,9 @@ def _generate_doctor_advice(mb_type):
     ending_advices = [
         item['advice']
         for item in advice_pool
-        if isinstance(item, dict) and '建议' in item['advice']
+        if isinstance(item, dict)
+        and '建议' in item['advice']
+        and item['advice'] not in advice_list  # 确保不添加重复的建议
     ]
     advice_list.extend(ending_advices)
 
